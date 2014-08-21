@@ -23,7 +23,7 @@ public class MarcoCuadroCombinado extends JFrame{
 
 	public MarcoCuadroCombinado(){
 		super("Prueba de JComboBox");
-		setLayout( new FlowLayout() ); 
+		setLayout(new FlowLayout()); 
 
 		imagenesJComboBox = new JComboBox(nombres);
 		imagenesJComboBox.setMaximumRowCount(3); 
