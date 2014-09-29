@@ -13,7 +13,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class InterfazJuegoPelota extends JFrame implements KeyListener{
+public class InterfazJuegoPelota extends JFrame{
 	private int VALORX = 450;
 	private int VALORY = 100;
 	private String tecla;
@@ -51,22 +51,6 @@ public class InterfazJuegoPelota extends JFrame implements KeyListener{
 		panelAcciones.add(panelBotones);
 		add(areaJuego);
 		add(panelAcciones, BorderLayout.SOUTH);
-
-		addKeyListener(this);
-	}
-
-	public void keyPressed(KeyEvent evento){
-		tecla = String.format("%s", evento.getKeyText(evento.getKeyCode()));
-		moverObjeto(evento);
-	}
-	public void keyReleased(KeyEvent evento){}
-	public void keyTyped(KeyEvent evento){}
-
-	public void moverObjeto(KeyEvent evento){
-		if(tecla.equals("T")){
-			VALORY--;
-			areaJuego.repaint();
-		}
 	}
 
 	private class AreaDeMovimiento extends JPanel{
