@@ -2,8 +2,7 @@ import java.awt.GridLayout;
 import java.awt.Container;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JFrame;
-import javax.swing.JButton;
+import javax.swing.*;
 
 public class MarcoGridLayout extends JFrame implements ActionListener{
 	private JButton botones[];
@@ -29,10 +28,28 @@ public class MarcoGridLayout extends JFrame implements ActionListener{
 	} 
 	
 	public void actionPerformed(ActionEvent evento){
-		if(alternar)
+		if(alternar){
+			try{
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 			contenedor.setLayout(cuadricula2);
-		else
+		}
+		else{
+			try{
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 			contenedor.setLayout(cuadricula1);
+		}
 		alternar = !alternar; 
 		contenedor.validate();
 	} 

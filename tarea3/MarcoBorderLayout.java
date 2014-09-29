@@ -1,8 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JFrame;
-import javax.swing.JButton;
+import javax.swing.*;
 
 public class MarcoBorderLayout extends JFrame implements ActionListener{
 	private JButton botones[]; 
@@ -29,10 +28,28 @@ public class MarcoBorderLayout extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent evento){
 		for(JButton boton : botones){
-			if(evento.getSource() == boton)
+			if(evento.getSource() == boton){
+				try{
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 				boton.setVisible(false); 
-			else
+			}
+			else{
+				try{
+					JFrame.setDefaultLookAndFeelDecorated(true);
+					JDialog.setDefaultLookAndFeelDecorated(true);
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
 				boton.setVisible(true);
+			}
 		}
 		esquema.layoutContainer(getContentPane());
 	}
