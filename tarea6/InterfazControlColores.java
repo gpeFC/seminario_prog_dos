@@ -8,12 +8,13 @@ public class InterfazControlColores extends JFrame{
 	private JSlider rangoVerdeJS;
 	private JSlider rangoAzulJS;
 
-	private JPanel panelSliders;
-	private JPanel panelCentral;
+	private JPanel panelDatos;
 
-	private AreaJPanel areaDibujo;
+	private AreaColoresSliders colorSlider;
 
 	public InterfazControlColores(){
+
+		super("Selector de Color");
 
 		rangoRojoJS = new JSlider(SwingConstants.HORIZONTAL, 0, 255, 0);
 		rangoRojoJS.setMajorTickSpacing(25);
@@ -25,50 +26,38 @@ public class InterfazControlColores extends JFrame{
 		rangoAzulJS.setMajorTickSpacing(25);
 		rangoAzulJS.setPaintTicks(true);
 
-		panelSliders = new JPanel();
-		panelSliders.setLayout(new BorderLayout());
-		panelSliders.setPreferredSize(new Dimension(300,200));
-		panelSliders.add(rangoRojoJS, BorderLayout.NORTH);
-		panelSliders.add(rangoVerdeJS, BorderLayout.CENTER);
-		panelSliders.add(rangoAzulJS, BorderLayout.SOUTH);
+		colorSlider = new AreaColoresSliders();
+		colorSlider.add(rangoRojoJS);
+		colorSlider.add(rangoVerdeJS);
+		colorSlider.add(rangoAzulJS);
 
-		panelCentral = new JPanel();
-		panelCentral.setPreferredSize(new Dimension(300,400));
-		panelCentral.add(panelSliders, BorderLayout.CENTER);
+		panelDatos = new JPanel();
+		panelDatos.setBackground(Color.BLACK);
+		panelDatos.setPreferredSize(new Dimension(350,50));
 
-		areaDibujo = new AreaJPanel();
-		areaDibujo.setPreferredSize(new Dimension(300,400));
-
-		add(areaDibujo, BorderLayout.EAST);
-		add(panelCentral, BorderLayout.WEST);
-
+		add(colorSlider);
+		add(panelDatos, BorderLayout.SOUTH);
 	}
 
-	private class AreaJPanel extends JPanel{
-		public void paintComponent(Graphics areaDibujo){
-			super.paintComponent(areaDibujo);
+	private class AreaColoresSliders extends JPanel{
+		public void paintComponent(Graphics colorSlider){
+			super.paintComponent(colorSlider);
 			
 			// establece nuevo color de dibujo, usando valores enteros
-			areaDibujo.setColor( new Color( 255, 0, 0 ) );
-			areaDibujo.fillRect( 0, 25, 25, 20 );
-			areaDibujo.drawString( "RGB actual: " + areaDibujo.getColor(), 130, 40 );
+			colorSlider.setColor( new Color( 255, 0, 0 ) );
+			colorSlider.fillRect( 25, 5, 40, 20 );
 			
 			// establece nuevo color de dibujo, usando valores de punto flotante
-			areaDibujo.setColor( new Color( 0.50f, 0.75f, 0.0f ) );
-			areaDibujo.fillRect( 0, 50, 25, 20 );
-			areaDibujo.drawString( "RGB actual: " + areaDibujo.getColor(), 130, 65 );
+			colorSlider.setColor( new Color( 0.50f, 0.75f, 0.0f ) );
+			colorSlider.fillRect( 25, 36, 40, 20 );
 			
 			// establece nuevo color de dibujo, usando objetos Color static
-			areaDibujo.setColor( Color.BLUE );
-			areaDibujo.fillRect( 0, 75, 25, 20 );
-			areaDibujo.drawString( "RGB actual: " + areaDibujo.getColor(), 130, 90 );
-			
-			// muestra los valores RGB individuales
-			Color color = Color.MAGENTA;
-			areaDibujo.setColor( color );
-			areaDibujo.fillRect( 0, 100, 25, 20 );
-			areaDibujo.drawString( "Valores RGB: " + color.getRed() + ", " +
-			color.getGreen() + ", " + color.getBlue(), 130, 115 );
+			colorSlider.setColor( Color.BLUE );
+			colorSlider.fillRect( 25, 68, 40, 20 );
+
+			colorSlider.setColor( new Color( 25, 50, 0 ) );
+			colorSlider.fillRect( 150, 110, 120, 50 );
+			colorSlider.drawString("Generado", 75, 138);
 		}
 	}
 }
