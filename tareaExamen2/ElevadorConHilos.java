@@ -6,7 +6,7 @@ public class ElevadorConHilos{
 		InterfazDeControlHilos control = new InterfazDeControlHilos();
 		elevador.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		control.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		elevador.setSize(800, 280);
+		elevador.setSize(817, 293);
 		control.setSize(250, 150);
 		elevador.setVisible(true);
 		control.setVisible(true);
