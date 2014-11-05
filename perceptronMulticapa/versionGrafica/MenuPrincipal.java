@@ -12,42 +12,42 @@ import javax.swing.*;
 public class MenuPrincipal extends JFrame{
 
 		// Objetos GUI - Menu principal.
-	private JButton continuar;
-	private JRadioButton crearRed;
-	private JRadioButton mostrarRed;
-	private JRadioButton aplicarRed;
-	private JRadioButton entrenarRed;
-	private JRadioButton eliminarRed;
-	private JRadioButton modificarRed;
-	private ButtonGroup menuOpciones;
+	private JButton continuarJB;
+	private JRadioButton crearRedJRB;
+	private JRadioButton mostrarRedJRB;
+	private JRadioButton aplicarRedJRB;
+	private JRadioButton entrenarRedJRB;
+	private JRadioButton eliminarRedJRB;
+	private JRadioButton modificarRedJRB;
+	private ButtonGroup menuOpcionesBG;
 
 	public MenuPrincipal(){
 		super("RNA - Perceptron Multicapa");
 		setLayout(new FlowLayout());
 
-		continuar = new JButton("Continuar");
+		continuarJB = new JButton("Continuar");
 
-		crearRed = new JRadioButton("Crear Red", true);
-		mostrarRed = new JRadioButton("Mostrar Red", false);
-		aplicarRed = new JRadioButton("Aplicar Red", false);
-		entrenarRed = new JRadioButton("Entrenar Red", false);
-		eliminarRed = new JRadioButton("Eliminar Red", false);
-		modificarRed = new JRadioButton("Modificar Red", false);
+		crearRedJRB = new JRadioButton("Crear Red", true);
+		mostrarRedJRB = new JRadioButton("Mostrar Red", false);
+		aplicarRedJRB = new JRadioButton("Aplicar Red", false);
+		entrenarRedJRB = new JRadioButton("Entrenar Red", false);
+		eliminarRedJRB = new JRadioButton("Eliminar Red", false);
+		modificarRedJRB = new JRadioButton("Modificar Red", false);
 
-		menuOpciones = new ButtonGroup();
-		menuOpciones.add(crearRed);
-		menuOpciones.add(mostrarRed);
-		menuOpciones.add(aplicarRed);
-		menuOpciones.add(entrenarRed);
-		menuOpciones.add(eliminarRed);
-		menuOpciones.add(modificarRed);
+		menuOpcionesBG = new ButtonGroup();
+		menuOpcionesBG.add(crearRedJRB);
+		menuOpcionesBG.add(mostrarRedJRB);
+		menuOpcionesBG.add(aplicarRedJRB);
+		menuOpcionesBG.add(entrenarRedJRB);
+		menuOpcionesBG.add(eliminarRedJRB);
+		menuOpcionesBG.add(modificarRedJRB);
 
-		add(crearRed);
-		add(mostrarRed);
-		add(aplicarRed);
-		add(entrenarRed);
-		add(eliminarRed);
-		add(modificarRed);
-		add(continuar);
+		add(crearRedJRB);
+		add(mostrarRedJRB);
+		add(aplicarRedJRB);
+		add(entrenarRedJRB);
+		add(eliminarRedJRB);
+		add(modificarRedJRB);
+		add(continuarJB);
 	}
 }

@@ -11,27 +11,34 @@ import javax.swing.*;
 
 public class TopologiaRed extends JFrame{
 
+		// Objetos Primitivos.
+	private String nombreRed;
+
 		// Objetos GUI - Topologia red.
-	private JButton continuar;
-	private JRadioButton redSimple;
-	private JRadioButton redMulticapa;
-	private ButtonGroup menuTopologia;
+	private JButton continuarJB;
+	private JTextField nombreRedJTF;
+	private JRadioButton redSimpleJRB;
+	private JRadioButton redMulticapaJRB;
+	private ButtonGroup menuTopologiaBG;
 
 	public TopologiaRed(){
 		super("Topologia Perceptron");
 		setLayout(new FlowLayout());
 
-		continuar = new JButton("Continuar");
+		continuarJB = new JButton("Continuar");
 
-		redSimple = new JRadioButton("Perceptron Simple", true);
-		redMulticapa = new JRadioButton("Perceptron Multicapa", false);
+		nombreRedJTF = new JTextField(15);
 
-		menuTopologia = new ButtonGroup();
-		menuTopologia.add(redSimple);
-		menuTopologia.add(redMulticapa);
+		redSimpleJRB = new JRadioButton("Perceptron Simple", true);
+		redMulticapaJRB = new JRadioButton("Perceptron Multicapa", false);
 
-		add(redSimple);
-		add(redMulticapa);
-		add(continuar);
+		menuTopologiaBG = new ButtonGroup();
+		menuTopologiaBG.add(redSimpleJRB);
+		menuTopologiaBG.add(redMulticapaJRB);
+
+		add(redSimpleJRB);
+		add(redMulticapaJRB);
+		add(nombreRedJTF);
+		add(continuarJB);
 	}
 }
