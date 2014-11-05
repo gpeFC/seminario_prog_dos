@@ -1,6 +1,19 @@
+/******************************************************************************
+ * UAEM, Facultad de Ciencias
+ * Seminario de Programacion II
+ * Emanuel GP
+ *
+ * Proyecto: Red Neuronal Artificial: Perceptron Multicapa con Retropropagacion
+ ******************************************************************************/
+
 	// Librerias basicas.
 import java.awt.*;
 import javax.swing.*;
+import java.awt.FlowLayout;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import java.util.ArrayList;
 
 /*=================================================================================================
 
@@ -147,4 +160,20 @@ import javax.swing.JScrollPane;
 
 =================================================================================================*/
 
-public class InterfazPerceptronMulticapa extends JFrame{}
+public class InterfazPerceptronMulticapa extends JFrame{
+
+		// Objetos Primitivos.
+	private int numeroCapas, numeroPatrones, numeroArgumentos;
+	private long epocasEntrenamiento;
+	private double alpha, error, salidas[], entradas[][];
+	private String nombre, funcion, topologia;
+	private final String FUNCIONES[] = {"IDENTIDAD", "LOGISTICA", "TANGENCIAL",	"HIPERBOLICA", 
+										"HARDLIM", "HARDLIMS"};
+
+		// Objetos RNAs.
+	private RedNeuronal redNeuronal;
+	private ArrayList<RedNeuronal> redesNeuronales;
+
+	public InterfazPerceptronMulticapa(){
+	}
+}
