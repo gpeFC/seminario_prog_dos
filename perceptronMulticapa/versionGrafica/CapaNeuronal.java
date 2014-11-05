@@ -3,7 +3,7 @@
  * Seminario de Programacion II
  * Emanuel GP
  *
- * Proyecto: Red Neuronal Artificial: Neurona Multicapa con Retropropagacion
+ * Proyecto: Red Neuronal Artificial: Perceptron Multicapa con Retropropagacion
  ******************************************************************************/
 
 public class CapaNeuronal{
@@ -89,14 +89,14 @@ public class CapaNeuronal{
 
 	/** Método para actualizar el valor del umbral\bias de cada una de las neuronas de la capa.(Simple) */
 	public void actualizarBiases(int indice, double error){
-		this.neuronas[indice].establecerUmbral(this.neuronas[indice].obtenerUmbral() + (this.neuronas[indice].obtenerAlpha()*error));
+		this.neuronas[indice].establecerUmbral(this.neuronas[indice].obtenerBias() + (this.neuronas[indice].obtenerAlpha()*error));
 	}
 
 	/** Método para actualizar el valor del umbral\bias de cada una de las neuronas de la capa.(Multicapa) */
 	public void actualizarBiases(){
 		double biasActual, biasNuevo=0.0;
 		for(int i=0; i<this.neuronas.length; i++){
-			biasActual = this.neuronas[i].obtenerUmbral();
+			biasActual = this.neuronas[i].obtenerBias();
 			biasNuevo = biasActual + (this.neuronas[i].obtenerAlpha() * this.delthas[i]);
 			System.out.printf("\nUmb: (%f) = (%f) + [(%f)*(%f)]\n", biasNuevo, biasActual, this.neuronas[i].obtenerAlpha(), this.delthas[i]);
 			this.neuronas[i].establecerUmbral(biasNuevo);
@@ -138,7 +138,14 @@ public class CapaNeuronal{
 	/** Método para calcular y establecer el deltha de cada neurona de la capa de salida. */
 	public void calcularDelthas(double[] errores){
 		for(int i=0; i<this.neuronas.length; i++){
-			this.delthas[i] = errores[i] * Funcion.derivada(this.funciones[i], Propagacion.sumaPonderada(this.neuronas[i].obtenerUmbral(), this.entradas, this.neuronas[i].obtenerPesos()));
+			if(this.funciones[i] == 1)
+				this.delthas[i] = errores[i] * Activacion.derivadaFuncionIdentidad(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()));
+			else if(this.funciones[i] == 2)
+				this.delthas[i] = errores[i] * Activacion.derivadaFuncionLogistica(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()));
+			else if(this.funciones[i] == 3)
+				this.delthas[i] = errores[i] * Activacion.derivadaFuncionTangencial(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()));
+			else if(this.funciones[i] == 4)
+				this.delthas[i] = errores[i] * Activacion.derivadaFuncionHiperbolica(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()));
 		}
 	}
 
@@ -151,7 +158,14 @@ public class CapaNeuronal{
 				pesos = neuronas[j].obtenerPesos();
 				sumaDeltha = sumaDeltha + (deltas[j]*pesos[i]);
 			}
-			this.delthas[i] = Funcion.derivada(this.funciones[i], Propagacion.sumaPonderada(this.neuronas[i].obtenerUmbral(), this.entradas, this.neuronas[i].obtenerPesos()))*sumaDeltha;
+			if(this.funciones[i] == 1)
+				this.delthas[i] = Activacion.derivadaFuncionIdentidad(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()))*sumaDeltha;
+			else if(this.funciones[i] == 2)
+				this.delthas[i] = Activacion.derivadaFuncionLogistica(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()))*sumaDeltha;
+			else if(this.funciones[i] == 3)
+				this.delthas[i] = Activacion.derivadaFuncionTangencial(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()))*sumaDeltha;
+			else if(this.funciones[i] == 4)
+				this.delthas[i] = Activacion.derivadaFuncionHiperbolica(ReglaPropagacion.sumaPonderada(this.neuronas[i].obtenerBias(), this.entradas, this.neuronas[i].obtenerPesos()))*sumaDeltha;
 		}
 	}
 
@@ -173,7 +187,7 @@ public class CapaNeuronal{
 		for(int i=0; i<neuronas.length; i++){
 			System.out.printf("\nNeurona (%d) {", i+1);
 			System.out.printf("Alpha:(%f) |", neuronas[i].obtenerAlpha());
-			System.out.printf(" Umbral:(%f) |", neuronas[i].obtenerUmbral());
+			System.out.printf(" Umbral:(%f) |", neuronas[i].obtenerBias());
 			pesos = neuronas[i].obtenerPesos();
 			System.out.printf(" Pesos:[");
 			for(int j=0; j<pesos.length; j++)
